@@ -40,7 +40,6 @@ app.post("/home", async function (request, response) {
         .insertMany(data)
     response.send(allData);
     console.log("data added successfully")
-
 });
 
 

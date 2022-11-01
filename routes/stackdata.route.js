@@ -1,5 +1,5 @@
 import express from 'express';
-import { AddAnswer, createQuestion, getAlldata, getDataById } from '../services/stackdata.js';
+import { AddQuestion, AddAnswer, getAlldata, getDataById } from '../services/stackdata.js';
 const router = express.Router();
 
 
@@ -20,23 +20,21 @@ router.get("/:id", async function (request, response) {
         : response.status(404).send({ msg: 'Not Found' });
 });
 
-// //Add Question
+// Add new Question
 // router.post("/", express.json(), async function (request, response) {
-//     const data = request.body;
+//     const data = request.body
 //     console.log(data);
-
-//     const result = await createQuestion(data)
+//     const result = await AddQuestion(data)
 //     response.send(result)
 // });
-router.put("/:id", async function (request, response) {
-    const { id } = request.params;
-    const answers = request.body;
-    const newAns = await AddAnswer(id, answers);
-    console.log(newAns);
-    newAns ?
-        response.send({ newAns })
-        : response.send(404).send({ msg: "Error occured " })
-});
 
+// // Add an answer to an existing Question
+// router.put("/:id", express.json(), async function (request, response) {
+//     const { id } = request.params;
+//     const answers = request.body;
+//     const updatedresult = await AddAnswer(id, answers);
+//     console.log(updatedresult);
+//     response.send({ updatedresult })
+// });
 
 export default router;

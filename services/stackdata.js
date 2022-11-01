@@ -15,14 +15,16 @@ export async function getDataById(id) {
         .findOne({ id: id });
 }
 
+export async function AddQuestion(data) {
+    return await client
+        .db("StackOvercloned")
+        .collection("stackdata")
+        .insertOne(data);
+}
 
 export async function AddAnswer(id, answers) {
     return await client
         .db("StackOvercloned")
         .collection("stackdata")
-        .updateMany({ id: id }, { $push: { answers: answers } });
+        .updateOne({ id: id }, { $push: { answers: answers } });
 }
-
-
-
-// 
