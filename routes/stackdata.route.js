@@ -21,20 +21,20 @@ router.get("/:id", async function (request, response) {
 });
 
 // Add new Question
-// router.post("/", express.json(), async function (request, response) {
-//     const data = request.body
-//     console.log(data);
-//     const result = await AddQuestion(data)
-//     response.send(result)
-// });
+router.post("/", express.json(), async function (request, response) {
+    const data = request.body
+    console.log(data);
+    const result = await AddQuestion(data)
+    response.send(result)
+});
 
-// // Add an answer to an existing Question
-// router.put("/:id", express.json(), async function (request, response) {
-//     const { id } = request.params;
-//     const answers = request.body;
-//     const updatedresult = await AddAnswer(id, answers);
-//     console.log(updatedresult);
-//     response.send({ updatedresult })
-// });
+// Add an answer to an existing Question
+router.put("/:id", express.json(), async function (request, response) {
+    const { id } = request.params;
+    const answers = request.body;
+    const updatedresult = await AddAnswer(id, answers);
+    console.log(updatedresult);
+    response.send({ updatedresult })
+});
 
 export default router;
