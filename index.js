@@ -22,10 +22,11 @@ async function createConnection() {
 
 export const client = await createConnection();
 
+app.use(cors());
+app.use(express.json());
 app.use("/home", stackRouter);
 app.use("/jobs", jobsRouter);
-app.use(express.json());
-app.use(cors());
+
 
 app.get("/", function (request, response) {
     response.send("🙋‍♂️ Welcome to Stackovercloned Backend");
