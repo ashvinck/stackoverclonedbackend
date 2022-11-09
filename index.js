@@ -2,11 +2,11 @@
 import express from "express"; // "type": "module"
 import * as dotenv from 'dotenv';
 import { Db, MongoClient } from "mongodb";
+import cors from "cors";
 import bodyParser from "body-parser";
 import stackRouter from "./routes/stackdata.route.js";
 import jobsRouter from "./routes/jobs.route.js";
 dotenv.config();
-
 
 const app = express();
 
@@ -25,6 +25,7 @@ export const client = await createConnection();
 app.use("/home", stackRouter);
 app.use("/jobs", jobsRouter);
 app.use(express.json());
+app.use(cors());
 
 app.get("/", function (request, response) {
     response.send("🙋‍♂️ Welcome to Stackovercloned Backend");
