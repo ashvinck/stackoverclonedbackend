@@ -27,7 +27,7 @@ app.use("/jobs", jobsRouter);
 app.use(express.json());
 
 app.get("/", function (request, response) {
-    response.send("🙋‍♂️, 🌏 🎊✨🤩");
+    response.send("🙋‍♂️ Welcome to Stackovercloned Backend");
 });
 
 app.listen(PORT, () => console.log(`The server started in: ${PORT} ✨✨`));
