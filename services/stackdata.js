@@ -28,3 +28,12 @@ export async function AddAnswer(id, answers) {
         .collection("stackdata")
         .updateOne({ id: id }, { $push: { answers: answers } });
 }
+
+export async function AddQueComment(id, queComments) {
+    return await client
+        .db("StackOvercloned")
+        .collection("stackdata")
+        .updateOne({ id: id }, { $push: { queComments: queComments } });
+}
+
+

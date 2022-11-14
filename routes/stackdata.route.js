@@ -1,5 +1,5 @@
 import express from 'express';
-import { AddQuestion, AddAnswer, getAlldata, getDataById } from '../services/stackdata.js';
+import { AddQuestion, AddAnswer, getAlldata, getDataById, AddQueComment } from '../services/stackdata.js';
 const router = express.Router();
 
 
@@ -35,6 +35,25 @@ router.put("/:id", express.json(), async function (request, response) {
     const updatedresult = await AddAnswer(id, answers);
     console.log(updatedresult);
     response.send({ updatedresult })
+});
+
+
+// Add a comment to an existing Question
+router.put("/:id/question/comments", express.json(), async function (request, response) {
+    const { id } = request.params;
+    const queComments = request.body;
+    const addedcomment = await AddQueComment(id, queComments);
+    console.log(addedcomment);
+    response.send({ addedcomment })
+});
+
+// Add a comment to an existing Answer
+router.put("/:id", express.json(), async function (request, response) {
+    const { id } = request.params;
+    const anscomment = request.body;
+    const addedcomment = await AddAnsComment(id, anscomment);
+    console.log(addedcomment);
+    response.send({ addedcomment })
 });
 
 export default router;
